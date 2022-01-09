@@ -50,7 +50,7 @@ pipeline {
             steps {
                 echo " ============== run docker compose =================="
                 dir ('docker/') {
-                	sh 'docker-compose run -d'
+                	sh 'docker-compose up -d'
                 }
             }        
         }
