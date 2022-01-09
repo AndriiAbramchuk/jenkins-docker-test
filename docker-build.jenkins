@@ -49,7 +49,7 @@ pipeline {
      stage("start docker-compose run") {
             steps {
                 echo " ============== run docker compose =================="
-                dir ('docker/mariadb/') {
+                dir ('docker/') {
                 	sh 'docker-compose run -d'
                 }
             }        
