@@ -45,6 +45,14 @@ pipeline {
                 docker push andriiabramchuk/mariadb:latest
                 '''
             }
-        } 
+        }
+     stage("start docker-compose run") {
+            steps {
+                echo " ============== run docker compose =================="
+                dir ('docker/mariadb/') {
+                	sh 'docker-compose run -d'
+                }
+            }        
+        }
     }
 }
