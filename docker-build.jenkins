@@ -10,13 +10,20 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
     }
-    stage("create docker image") {
+    stage("create docker image php-apache") {
             steps {
                 echo " ============== start building image =================="
-                dir ('docker/toolbox') {
-                	sh 'docker build -t semaev/toolbox:latest . '
+                dir ('docker/php-apache/') {
+                	sh 'docker build -t andriiabramchuk/php-apache:8.1.1 . '
                 }
             }
+    stage("create docker image mariadb") {
+            steps {
+                echo " ============== start building image =================="
+                dir ('docker/mariadb/') {
+                	sh 'docker build -t andriiabramchuk/mariadb:latest . '
+                }
+            }        
         }
      }
 }
