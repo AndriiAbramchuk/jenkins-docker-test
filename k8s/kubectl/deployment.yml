@@ -19,7 +19,7 @@ spec:
         image: andriiabramchuk/php-apache:8.1.1
         ports:
         - containerPort: 80
-      - name : database
-        image: andriiabramchuk/mariadb:latest
-        ports:
-        - containerPort: 3306
+#      - name : database
+#        image: andriiabramchuk/mariadb:latest
+#        ports:
+#        - containerPort: 3306
