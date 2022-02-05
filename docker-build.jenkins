@@ -9,7 +9,7 @@ pipeline {
     options {
         timestamps()
     }
-    stages {
+/*    stages {
         stage("docker login") {
             steps {
                 echo " ============== docker login =================="
@@ -44,19 +44,30 @@ pipeline {
                 docker push andriiabramchuk/mariadb:latest
                 '''
             }
-        }
+        } */
         stage("minikube start") {
             steps {
                 echo " ============== minikube start =================="
               sh 'minikube start'
             }
         }
-        stage("minikube delete") {
+        stage("create deploy and service") {
+            steps {
+                echo " ============== start create deploy and service =================="
+                dir ('k8s/kubectl/') {
+                 sh '''
+                kubectl apply -f deployment.yml
+                kubectl apply -f service.yml
+                '''
+                }
+            }
+        }        
+ /*       stage("minikube delete") {
             steps {
                 echo " ============== minikube delete =================="
               sh 'minikube stop; minikube delete'
             }
-        }
+        }*/
 //     stage("start docker-compose run") {
 //            steps {
 //                echo " ============== run docker compose =================="
