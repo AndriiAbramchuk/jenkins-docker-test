@@ -1,2 +1,2 @@
 FROM mariadb:latest
-MAINTAINER andriiabramchuk
+LABEL author="andriiabramchuk"
