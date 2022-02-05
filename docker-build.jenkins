@@ -45,13 +45,25 @@ pipeline {
                 '''
             }
         }
-     stage("start docker-compose run") {
+        stage("minikube start") {
             steps {
-                echo " ============== run docker compose =================="
-                dir ('docker/') {
-                	sh 'docker-compose up -d'
-                }
-            }        
+                echo " ============== minikube start =================="
+              sh 'minikube start'
+            }
         }
+        stage("minikube delete") {
+            steps {
+                echo " ============== minikube delete =================="
+              sh 'minikube stop; minikube delete'
+            }
+        }
+//     stage("start docker-compose run") {
+//            steps {
+//                echo " ============== run docker compose =================="
+//                dir ('docker/') {
+//               	sh 'docker-compose up -d'
+//               }
+//            }        
+//        }
     }
 }
