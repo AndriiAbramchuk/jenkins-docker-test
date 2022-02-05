@@ -15,11 +15,11 @@ spec:
         project: lamp
     spec:
       containers:
-        - name : web
-          image: andriiabramchuk/php-apache:8.1.1 
-          ports:
-            - containerPort: 80
-       - name : database
-          image: andriiabramchuk/mariadb:latest
-          ports:
-            - containerPort: 3306
+      - name : web
+        image: andriiabramchuk/php-apache:8.1.1
+        ports:
+        - containerPort: 80
+      - name : database
+        image: andriiabramchuk/mariadb:latest
+        ports:
+        - containerPort: 3306
